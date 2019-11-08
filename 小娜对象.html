@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function XiaoNa() {
+            this.sayHi = function () {
+                var msg = prompt('请输入一下的数字或者关键字\n输入1或者总和，可以求总和\n输入2或者时间，可以得到现在的时间\n输入3或者笑话，可以讲笑话，\n输入q退出')
+                return msg;
+            }
+            this.time = function() {
+                var date = new Date();
+                var year = date.getFullYear();
+                var mon = date.getMonth() + 1;
+                var day = date.getDate();
+                var hour = date.getHours();
+                var min = date.getMinutes();
+                var sec = date.getSeconds();
+                year = year < 10? '0' + year : year;
+                mon = mon < 10? '0' + mon : mon;
+                day = day < 10? '0' + day : day;
+                hour = hour < 10? '0' + hour : hour;
+                min = min < 10? '0' + min : min;
+                sec = sec < 10? '0' + sec : sec;
+                var time = year + '-' + mon + '-' + day + ' ' + hour + ':' + min + ':' + sec;
+                alert(time);
+            }
+            this.getSum = function () {
+                var str = prompt('请输入要求和的数字，以逗号隔开');
+                var arr = str.split(',');
+                var sum = 0;
+                for (var i = 0;i < arr.length; i++) {
+                    sum += parseFloat(arr[i]);
+                }
+                alert(sum);
+            }
+            this.story = function () {
+                var arr1 = ['xiaohu1','xiaohu2','xiaohu3','xiaohu4','xiaohu5','xiaohu6'];
+                var num = Math.floor(Math.random() * arr1.length);
+                alert(arr1[num]);
+            }
+            this.notKnow = function () {
+                alert('小娜还小，不知道你在说啥');
+            }
+        }
+        var xiaoNa = new XiaoNa();
+        while(true) {
+            var input = xiaoNa.sayHi();
+            if (input == 'q') {
+                break;
+            }
+            switch(input) {
+                case '1':
+                    xiaoNa.getSum();
+                    break;
+                case '2':
+                    xiaoNa.time();
+                    break;
+                case '3':
+                    xiaoNa.story();
+                    break;
+                default:
+                    xiaoNa.notKnow();
+            }
+        }
+    </script>
+</body>
+</html>
